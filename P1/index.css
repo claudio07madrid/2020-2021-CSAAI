@@ -1,5 +1,5 @@
 body{
-   background-image: url('tecnology.jpg');
+   background-image: url("tecnology.jpg");
    }
 
 h3{
@@ -22,4 +22,16 @@ p1{
     border: solid;
     border-color: black;
     font-size: medium;
+}
+/* Estilo de la caja lateral*/
+aside{
+    width:30%;
+    border: 10px double;
+    margin: 0px;
+    padding: 15px;
+}
+/*Estilo de la caja principal*/
+main{
+    border: 10px double;
+    
 }
