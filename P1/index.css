@@ -64,32 +64,32 @@ right{
 /*Modifico posicion del gif del cohete*/
 .gifrocket{
     position:absolute;
-    right: 80px;
-    top:600px;
+    right: 200px;
+    top:570px;
 }
 /*Modifico posicion del gif del coche tesla*/
 .giftesla{
     position:absolute;
     right: 50px;
-    top:500px;
+    top:470px;
 }
 /*Modifico posicion del gif de spacex*/
 .gifspacex{
     position:absolute;
     right: 200px;
-    top:500px;
+    top:470px;
 }
 /*Modifico posicion del gif de homer estudiando*/
 .gifhomer{
     position:absolute;
     right:250px;
-    top:300px;
+    top:280px;
 }
 /*Modifico posicion del gif del birrete*/
 .gifgraduation{
     position:absolute;
     right:500px;
-    top:235px;
+    top:230px;
 }
 /*DOy color al link porque el fondo es negro y no se distinguía*/
 .link{
