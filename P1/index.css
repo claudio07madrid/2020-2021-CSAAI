@@ -1,21 +1,23 @@
+/*Documento de estilo referido al CV de Elon Musk*/
+/*Aquí sólo modifico la imagen de fondo*/
 body{
    background-image: url('marte.jpg');
    }
-
+/*Aquí alineo en el centro los h3*/
 h3{
     text-align: center;
 }
-
+/*Aquí alineo en el centro los h1 y los pongo de color morado*/
 h1{
     text-align: center;
     color: purple;
 }
-
+/*Aquí alineo en el centro los h2 y los pongo de color blanco*/
 h2{
     color: white;
     text-align: center;
 }
-
+/*Aquí modifico el párrafo p1*/
 p1{
     padding: 5px;  /* relleno */
     margin: 10px;  /* Margen */
@@ -24,7 +26,7 @@ p1{
     font-size: medium;
 }
 /* Estilo de la caja lateral*/
-izq{
+left{
     width:30%;
     border: 10px double;
     margin: 0px;
@@ -34,7 +36,7 @@ izq{
     color: white;
 }
 /*Estilo de la caja principal*/
-dcha{
+right{
     border: 10px double;
     width: 65%;
     float: right;
@@ -59,34 +61,41 @@ dcha{
     font-family: monospace;
     font-size: xx-large;
 }
+/*Modifico posicion del gif del cohete*/
 .gifrocket{
     position:absolute;
     right: 80px;
     top:600px;
 }
+/*Modifico posicion del gif del coche tesla*/
 .giftesla{
     position:absolute;
     right: 50px;
     top:500px;
 }
+/*Modifico posicion del gif de spacex*/
 .gifspacex{
     position:absolute;
     right: 200px;
     top:500px;
 }
+/*Modifico posicion del gif de homer estudiando*/
 .gifhomer{
     position:absolute;
     right:250px;
     top:300px;
 }
+/*Modifico posicion del gif del birrete*/
 .gifgraduation{
     position:absolute;
     right:500px;
     top:235px;
 }
+/*DOy color al link porque el fondo es negro y no se distinguía*/
 .link{
     color: white;
 }
+/*Doy color de fondo para que se vea la firma porque el fondo es negro*/
 .signature{
     background-color: white;
 }
