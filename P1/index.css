@@ -57,29 +57,33 @@ dcha{
     color:blue;
     text-align: center;
     font-family: monospace;
+    font-size: xx-large;
 }
 .gifrocket{
-    position: fixed;
+    position:absolute;
     right: 80px;
     top:600px;
 }
 .giftesla{
-    position: fixed;
+    position:absolute;
     right: 50px;
     top:500px;
 }
 .gifspacex{
-    position: fixed;
+    position:absolute;
     right: 200px;
     top:500px;
 }
 .gifhomer{
-    position: fixed;
+    position:absolute;
     right:250px;
     top:300px;
 }
 .gifgraduation{
-    position: fixed;
+    position:absolute;
     right:500px;
     top:235px;
+}
+.link{
+    color: white;
 }
