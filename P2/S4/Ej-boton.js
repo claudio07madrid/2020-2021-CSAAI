@@ -1,20 +1,23 @@
+//-- Contador de clicks de boton
+
 console.log("Ejecutando JS...");
 
-const botones = document.getElementsByClassName("digito")
+//-- Acceder a los elementos del DOM
+const display = document.getElementById("display");
+const boton = document.getElementById("boton");
 
-//-- Función de retrollamada de los botones
-//-- botones de la clase dígito
-function digito(value)
-{
-  console.log("Has pulsado correctamente");
-}
+parrafo = " Parrafo nuevo "
 
-for (let boton of botones) {
+//-- Contador de clicks
+let cont = " ";
 
-  //-- Establecer la funcion de llamada del boton i
-  //-- El parámetro ev.target contiene el boton
-  //-- que ha recibido el click
-  boton.onclick = (ev) => {
-    digito(ev.target.value)
-  }
+//-- Configurar retrollamada del boton
+boton.onclick = () => {
+  console.log("Click nrº");
+
+  //-- Incrementar contador
+  cont += parrafo;
+
+  //-- Actualizar el display
+  display.innerHTML += parrafo +"<br>"
 }
