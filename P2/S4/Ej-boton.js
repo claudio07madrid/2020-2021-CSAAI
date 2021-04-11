@@ -7,6 +7,7 @@ const display = document.getElementById("display");
 const boton = document.getElementById("boton");
 
 parrafo = " Parrafo nuevo "
+num = 1
 
 //-- Contador de clicks
 let cont = " ";
@@ -16,8 +17,9 @@ boton.onclick = () => {
   console.log("Click nrº");
 
   //-- Incrementar contador
-  cont += parrafo;
+  /*cont += parrafo;*/
 
   //-- Actualizar el display
-  display.innerHTML += parrafo +"<br>"
+  display.innerHTML = parrafo += " 1"
+  
 }
