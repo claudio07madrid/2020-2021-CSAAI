@@ -15,7 +15,7 @@ let y = 10;
 
 //-- Velocidad horizontal del objeto
 let velx = 3;
-let vely = 0.2;
+let vely = 1;
 
 
 //-- Funcion principal de animacion
@@ -29,6 +29,10 @@ function update()
   //-- Condicion de rebote en extremos del canvas
   if (x < 0 || x >= (canvas.width - 20) ) {
     velx = -velx;
+  }
+
+  if (y <= 0 || y > 80) {
+      vely = -vely;
   }
 
   //-- Adtualizar la posición
