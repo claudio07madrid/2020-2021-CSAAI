@@ -11,10 +11,10 @@ const ctx = canvas.getContext("2d");
 
 //-- Posición del elemento a animar
 let x = 0;
-let y = 0;
+let y = 10;
 
 //-- Velocidad horizontal del objeto
-let velx =2;
+let velx = 3;
 
 //-- Funcion principal de animacion
 function update() 
@@ -24,12 +24,9 @@ function update()
   //-- 1) Actualizar posiciones de los elementos
   //-- (física del movimiento rectilíneo uniforme)
 
-
-  //-- Comprobar colisión con borde derecho
-  //-- Si se alcanza la anchura del canvas, se cambia la velocidad
-  //-- de signo (rebote)
-  if (x >= canvas.width) {
-      velx = -velx;
+  //-- Condicion de rebote en extremos del canvas
+  if (x < 0 || x >= (canvas.width - 20) ) {
+    velx = -velx;
   }
 
   //-- Adtualizar la posición
