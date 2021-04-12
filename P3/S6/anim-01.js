@@ -9,12 +9,14 @@ canvas.height = 100;
 //-- Obtener el contexto del canvas
 const ctx = canvas.getContext("2d");
 
-//-- Posición del elemento a animar
+//-- Coordenadas del objeto
 let x = 0;
 let y = 10;
 
 //-- Velocidad horizontal del objeto
 let velx = 3;
+let vely = 0.2;
+
 
 //-- Funcion principal de animacion
 function update() 
@@ -31,6 +33,7 @@ function update()
 
   //-- Adtualizar la posición
   x = x + velx;
+  y = y + vely;
 
 
   //-- 2) Borrar el canvas
