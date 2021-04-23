@@ -1,97 +1,95 @@
 console.log("Ejecutando JS...");
 
 display = document.getElementById("display")
+//--operando = document.getElementsByClassName("operando")
 igual = document.getElementById("igual")
 clear = document.getElementById("clear")
-borrar = document.getElementById("borrar")
 punto = document.getElementById("punto")
+
+let digito = document.getElementsByClassName("digito")
 
 //-- Estados de la calculadora
 const ESTADO = {
     INIT: 0,
     OP1: 1,
     OPERATION: 2,
-    OP2: 3,
-    COMA: false,
+    OP2: 3
 }
  
-//-- Crea un array con todos los elementos de la clase operacion
-let operando = document.getElementsByClassName("operando");
-//--Crea un array con todos los elementos de la clase digito
-let digitos = document.getElementsByClassName("digito")
-
-
  //-- Variable de estado de la calculadora
  //-- Al comenzar estamos en el estado incial
-let estado = ESTADO.INIT;   
-
- //-- Recorrer el array de los digitos del 0 al 9
-for (i=0; i<digitos.lenght; i++){
-     digitos[i].onclick = (ev) => {
-         digito(ev.target.value);
-    }
-}
-
+ let estado = ESTADO.INIT;   
 
 //-- Función de retrollamada de los digitos
-function digito(botones)
+function digito(ev)
 {
     //-- Se ha recibido un dígito
     //-- Según en qué estado se encuentre la calculadora
     //-- se hará una cosa u otra
-   
+
     //-- Si es el primer dígito, no lo añadimos,
     //-- sino que lo mostramos directamente en el display
     if (estado == ESTADO.INIT) {
-        display.innerHTML = botones;
+
+        display.innerHTML = ev.target.value;
+
         //-- Pasar al siguiente estado
         estado = ESTADO.OP1;
-        console.log(estado, "operador 1");
 
-    } else if (estado == ESTADO.OP1 || estado == ESTADO.OP2 || estado == ESTADO.OPERATION) {
-       
-        //--En cualquier otro estado lo añadimos
-        display.innerHTML += botones;
-        if (estado == ESTADO.OPERATION) {
-            estado = ESTADO.OP2;
-            console.log(estado, "operador 2");
-            ESTADO.COMA = false;
-        }
-    } 
-    
+    } else if (estado == ESTADO.OP1 ) {
+        display.innerHTML += ev.target.value;
+    } else if (estado == ESTADO.OPERATION) {
+        display.innerHTML += ev.target.value;
+        estado = ESTADO.OP2;
+    } else if (estado == ESTADO.OP2) {
+        display.innerHTML += ev.target.value;
+    }
+
 }
 
-//--Array de los operandos
-for (i=0; i<operando.lenght; i++){
 
-    operando[i].onclik = (ev)=> {
-        if (estado == ESTADO.OP1){
-            display.innerHTML += ev.target.value;
-            estado = ESTADO.OPERATION;
-            console.log(estado, "operando");
-            ESTADO.COMA = true;
-        }
+//-- Establecer la misma función de retrollamada
+//-- para todos los botones de tipo dígito
+for (i=0; i<digitos.lenght; i++) {
+    digito[i].onclick = (ev)=>{
+        digito(ev.target.value);
     }
+}
+
+//-------- Resto de funciones de retrollamada
+
+//-- Operación de sumar
+suma.onclick = (ev) => {
+
+    //-- Insertar simbolo de sumar
+    display.innerHTML += ev.target.value;
+
+    //-- ¡Ojo! Aquí se inserta el + siempre!
+    //-- Para que la calculadora funcione bien
+    //-- sólo se debe permitir insertar el operador
+    //-- en el estado OP1, y debe cambiar el estado
+    //-- a OPERATION (según el diagrama de estados)
+  
 }
 
 //-- Evaluar la expresion
 igual.onclick = () => {
   
+    if(estado == ESTADO.OP1 || estado == ESTADO.OP2){
+        display.innerHTML = eval(display.innerHTML);
+        estado = ESTADO.OPERATION;
+    }
     //-- Calcular la expresión y añadirla al display
-    display.innerHTML = eval(display.innerHTML);
-
+    
     //-- ¡Ojo! Aquí se hace siempre!
     //-- Sólo se debe permitar que eso se haga
     //-- si se está en el estado final (OP2)
-  
 }
 
 //-- Poner a cero la expresion
 //-- Y volver al estado inicial
 clear.onclick = () => {
   display.innerHTML = "0";
+  console.log("clear")
   estado = ESTADO.INIT;
 }
-
-
-
