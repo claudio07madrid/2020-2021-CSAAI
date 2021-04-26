@@ -3,7 +3,7 @@ console.log("Ejecutando JS...");
 display = document.getElementById("display")
 igual = document.getElementById("igual")
 clear = document.getElementById("clear")
-delete = document.getElementById("delete")
+borrar = document.getElementById("delete")
 
 let digitos = document.getElementsByClassName("digito");
 let operando = document.getElementsByClassName("operando");
@@ -61,11 +61,16 @@ for(i=0; i<digitos.length; i++) {
 //--Operandos
 for(i=0; i<operando.length; i++){
     operando[i].onclick=(ev)=>{
-        if (estado == ESTADO.OP1) {
-            display.innerHTML += ev.target.value;
-            estado = ESTADO.OPERATION;
-        }
-        console.log("Operando")
+        operacion(ev.target.value);
+        console.log("Operacion");
+    }
+}
+
+
+function operacion(operation){
+    if(estado != ESTADO.OPERATION) {
+        display.innerHTML += operation;
+        estado = ESTADO.OPERATION;
     }
 }
 
@@ -96,4 +101,9 @@ clear.onclick = () => {
   display.innerHTML = "0";
   console.log("clear")
   estado = ESTADO.INIT;
+}
+
+borrar.onclick = (ev) => { 
+    display.innerHTML = display.innerHTML.slice(0,-1);
+    
 }
