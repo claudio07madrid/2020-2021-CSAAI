@@ -5,6 +5,7 @@ igual = document.getElementById("igual")
 clear = document.getElementById("clear")
 borrar = document.getElementById("delete")
 
+
 let digitos = document.getElementsByClassName("digito");
 let operando = document.getElementsByClassName("operando");
 
@@ -61,8 +62,10 @@ for(i=0; i<digitos.length; i++) {
 //--Operandos
 for(i=0; i<operando.length; i++){
     operando[i].onclick=(ev)=>{
-        operacion(ev.target.value);
-        console.log("Operacion");
+        if(estado == ESTADO.OP1){
+            operacion(ev.target.value);
+            console.log("Operacion")
+        }
     }
 }
 
@@ -103,7 +106,7 @@ clear.onclick = () => {
   estado = ESTADO.INIT;
 }
 
-borrar.onclick = (ev) => { 
+borrar.onclick = () => { 
     display.innerHTML = display.innerHTML.slice(0,-1);
     
 }
