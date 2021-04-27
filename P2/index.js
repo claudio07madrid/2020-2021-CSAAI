@@ -87,15 +87,12 @@ function operacion(operation){
 //-- Evaluar la expresion
 igual.onclick = () => {
   
-    if(estado == ESTADO.OP1 || estado == ESTADO.OP2){
+
         display.innerHTML = eval(display.innerHTML);
         estado = ESTADO.OP1;
-    }
+        ans.value = display.innerHTML;
+   
     //-- Calcular la expresión y añadirla al display
-    
-    //-- ¡Ojo! Aquí se hace siempre!
-    //-- Sólo se debe permitar que eso se haga
-    //-- si se está en el estado final (OP2)
 }
 
 //-- Poner a cero la expresion
@@ -110,3 +107,12 @@ borrar.onclick = () => {
     display.innerHTML = display.innerHTML.slice(0,-1);
     
 }
+//--Raiz cuadrada
+sqrt.onclick = () => {
+    display.innerHTML = Math.sqrt(display.innerHTML);
+}
+
+//-- ANSWER
+ans.onclick = () => {
+    display.innerHTML += ans.value;
+ }
