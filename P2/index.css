@@ -38,6 +38,7 @@ button{
     bottom: 0;
     right: 0;
     left: 0;
+    border-style: none;
     width: 63px;
     height: 50px;
     border-radius: 50%;
