@@ -4,10 +4,18 @@ display = document.getElementById("display")
 igual = document.getElementById("igual")
 clear = document.getElementById("clear")
 borrar = document.getElementById("delete")
+contenedor = document.getElementById("contenedor")
+document.getElementById('caja').style.display = 'none';
 
 
 let digitos = document.getElementsByClassName("digito");
 let operando = document.getElementsByClassName("operando");
+
+function Abrir_Calculadora() {
+    document.getElementById('caja').style.display = 'inline-block';
+    elementoinicial = contenedor.parentNode
+    elementoinicial.removeChild(contenedor)
+}
 
 //-- Estados de la calculadora
 const ESTADO = {
