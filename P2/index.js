@@ -123,4 +123,5 @@ sqrt.onclick = () => {
 //-- ANSWER
 ans.onclick = () => {
     display.innerHTML += ans.value;
+    estado = ESTADO.OP1;
  }
