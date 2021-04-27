@@ -2,8 +2,6 @@ body {
     background-image: url(fondoiphone.jpg);
 }
 
-
-
 #caja{
     background-color:black;
     margin-top: 7.7cm;
@@ -29,8 +27,7 @@ body {
     color: white;
     font-size: 20px;
     font-family: "Segoe UI"
-    'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
-    
+    'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif    
 }
 
 button{
@@ -45,9 +42,6 @@ button{
     font-size: 25px;
     font-family: "Segoe UI"
     'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
-    
-
-    
 }
 
 .operando{

@@ -9,13 +9,18 @@
     <title>Claudioladora</title>
 </head>
 <body>
+    <!--Creo el botón que te lleva hacia la calculadora, el botón de la página inicial.
+    Para ello creo la función Abrir_Calculadora() que defino en el archivo javascript.-->
     <div id="contenedor">
         <button class="boton_abrir" type="button"
         onclick="Abrir_Calculadora()"><img src="iconocalc.png" alt="iconocalc" width="35px"></button>
     </div>
-
+<!--A partir de aquí defino la "caja" con todos los botones. Lo divido en 6 filas, para ello
+utilizo las divisiones. Necesito distintos id y clases para los botones, ya que no todos tienen
+la misma función-->
     <div id="caja">
         <p id="display"></p>
+
         <div class="1º fila">
             <button id="clear">AC</button>
             <button id="delete">C</button>
@@ -23,6 +28,7 @@
             <button class="operando" value="/">÷</button>
 
         </div>
+
         <div class="2º fila">
             <button class="digito" value="7">7</button>
             <button class="digito" value="8">8</button>
@@ -36,6 +42,7 @@
             <button class="digito" value="6">6</button>
             <button class="operando" value="-">-</button>    
         </div>
+
         <div class="4º fila">
             <button class="digito" value="1">1</button>
             <button class="digito" value="2">2</button>
@@ -43,22 +50,21 @@
             <button class="operando" value="+">+</button>
             
         </div>
+
         <div class="5º fila">
             <button class="digito" value="0">0</button>
             <button class="digito" value=".">.</button>
             <button clsass="operando" id="sqrt">√</button>
-            <button id="igual">=</button>
-            
-           
+            <button id="igual">=</button>     
         </div>
-        
+<!--Aquí es donde coloco el botón de "volver a la página anterior, que
+    simplemente actualiza la página con la función location.reload()"-->
         <div class="6º fila">
             <button id="ans">ANS</button>
             <button id="volver" value="Actualizar" onclick="location.reload()">◄</button>
-
         </div>  
+
     </div>
-    
-    
+
 </body>
 </html>
