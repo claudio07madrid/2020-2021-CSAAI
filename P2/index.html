@@ -9,7 +9,6 @@
     <title>Claudioladora</title>
 </head>
 <body>
-    <!--img class="phone" src="iphone2.png" alt="iphone" width="450px"!-->
     <div id="contenedor">
         <button class="boton_abrir" type="button"
         onclick="Abrir_Calculadora()"><img src="iconocalc.png" alt="iconocalc" width="35px"></button>
@@ -18,35 +17,45 @@
     <div id="caja">
         <p id="display"></p>
         <div class="1º fila">
+            <button id="clear">AC</button>
+            <button id="delete">C</button>
+            <button class="operando" value="**" id="pot">^</button>
+            <button class="operando" value="/">÷</button>
+
+        </div>
+        <div class="2º fila">
             <button class="digito" value="7">7</button>
             <button class="digito" value="8">8</button>
             <button class="digito" value="9">9</button>
-            <button id="delete">DEL</button>
-            <button id="clear">AC</button>
+            <button class="operando" value="*">x</button>    
         </div>
 
-        <div class="2º fila">
+        <div class="3º fila">
             <button class="digito" value="4">4</button>
             <button class="digito" value="5">5</button>
             <button class="digito" value="6">6</button>
-            <button class="operando" value="*">x</button>
-            <button class="operando" value="/">÷</button>
-            <button id="ans">ANS</button>
+            <button class="operando" value="-">-</button>    
         </div>
-        <div class="3º fila">
+        <div class="4º fila">
             <button class="digito" value="1">1</button>
             <button class="digito" value="2">2</button>
             <button class="digito" value="3">3</button>
             <button class="operando" value="+">+</button>
-            <button class="operando" value="-">-</button>
+            
         </div>
-        <div class="4º fila">
+        <div class="5º fila">
             <button class="digito" value="0">0</button>
             <button class="digito" value=".">.</button>
-            <button id="igual">=</button>
-            <button class="operando" value="**">^</button>
             <button clsass="operando" id="sqrt">√</button>
+            <button id="igual">=</button>
+            
+           
         </div>
+        
+        <div class="6º fila">
+            <button id="ans">ANS</button>
+
+        </div>  
     </div>
     
     

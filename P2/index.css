@@ -5,7 +5,7 @@ body {
 
 
 #caja{
-    background-color:cornsilk;
+    background-color:black;
     margin-top: 7.7cm;
     margin-left: 21.75cm;
     height: 9.8cm;
@@ -20,22 +20,36 @@ body {
 }
 
 .digito{
-    color:blue;
+    color: white;
+    background-color: rgb(44, 43, 43);
 }
 
 #display{
-    background-color:cyan;
     padding: 15px;
+    color: white;
     
 }
 
 button{
-    width: 40px;
-    height: 60px;
+    width: 63px;
+    height: 50px;
     border-radius: 30%;
     font-family: "Segoe UI"
 }
 
 .operando{
     background-color:orange;
+}
+
+#igual{
+    background-color: orange;
+}
+
+#pot{
+    background-color: gray;
+}
+
+#sqrt{
+    background-color: rgb(44, 43, 43);
+    color: white
 }
