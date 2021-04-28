@@ -21,3 +21,4 @@ Estado inicial - Operador 1 - Operando - Operando 2 - Evaluación expresión
 Esto impide por ejemplo esta expresión: 1 + 1 + 1.
 En todo caso, sería 1 + 1, evaluamos, y después sumamos el otro 1.
 
+- Las mejoras que he implementado es la raíz cuadrada, la potencia y el answer.
