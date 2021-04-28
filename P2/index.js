@@ -1,5 +1,8 @@
 console.log("Ejecutando JS...");
 
+//--Los id que he creado en el archivo html, los necesito utilizar en el js,
+//--por tanto los defino aquí a través del getElementById
+
 display = document.getElementById("display")
 igual = document.getElementById("igual")
 clear = document.getElementById("clear")
@@ -7,10 +10,13 @@ borrar = document.getElementById("delete")
 contenedor = document.getElementById("contenedor")
 document.getElementById('caja').style.display = 'none';
 
+//--Aquí creo arrays a partir de las clases creadas en html
 
 let digitos = document.getElementsByClassName("digito");
 let operando = document.getElementsByClassName("operando");
 
+//--Esta función me permite abrir la interfaz de la calculadora a partir
+//-- pulsando el botón en la interfaz inicial
 function Abrir_Calculadora() {
     document.getElementById('caja').style.display = 'inline-block';
     elementoinicial = contenedor.parentNode
@@ -44,7 +50,7 @@ function digito(valor)
 
         display.innerHTML = valor;
 
-        //-- Pasar al siguiente estado
+        //-- Pasar a los siguientes estados
         estado = ESTADO.OP1;
 
     } else if (estado == ESTADO.OP1 ) {
@@ -67,7 +73,8 @@ for(i=0; i<digitos.length; i++) {
         digito(ev.target.value)
     }
 }
-//--Operandos
+//--Establecer la misma función de retrollamada
+//-- para todos los botones de tipo operando
 for(i=0; i<operando.length; i++){
     operando[i].onclick=(ev)=>{
         if(estado == ESTADO.OP1){
@@ -77,7 +84,9 @@ for(i=0; i<operando.length; i++){
     }
 }
 
-
+//--Función que permite realziar la operación
+//--Si estado es distindo a ESTADO.OPERATION pero se le 
+//--añade un operador, el estado estará en ESTADO.OPERATION
 function operacion(operation){
     if(estado != ESTADO.OPERATION) {
         display.innerHTML += operation;
@@ -85,12 +94,7 @@ function operacion(operation){
     }
 }
 
-
-
-
 //-------- Resto de funciones de retrollamada
-
-
 
 //-- Evaluar la expresion
 igual.onclick = () => {
@@ -111,16 +115,19 @@ clear.onclick = () => {
   estado = ESTADO.INIT;
 }
 
+//--Borrar el último dígito que hemos introducido
 borrar.onclick = () => { 
     display.innerHTML = display.innerHTML.slice(0,-1);
     
 }
-//--Raiz cuadrada
+//--Función que realiza la raíz cuadrada
 sqrt.onclick = () => {
     display.innerHTML = Math.sqrt(display.innerHTML);
 }
 
-//-- ANSWER
+//--Función que permite el "answer", es decir, que 
+//--puedes escribir el resultado obtenido con la última 
+//--operación hecha
 ans.onclick = () => {
     display.innerHTML += ans.value;
     estado = ESTADO.OP1;
