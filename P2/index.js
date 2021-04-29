@@ -117,7 +117,13 @@ clear.onclick = () => {
 
 //--Borrar el último dígito que hemos introducido
 borrar.onclick = () => { 
-    display.innerHTML = display.innerHTML.slice(0,-1);
+    if (estado == ESTADO.OP2 || estado == ESTADO.OPERATION){
+        display.innerHTML = display.innerHTML.slice(0,-1);
+        estado = ESTADO.OP1;
+    }else if(estado == ESTADO.OP1){
+        display.innerHTML = display.innerHTML.slice(0, -1);
+    }
+    
     
 }
 //--Función que realiza la raíz cuadrada
