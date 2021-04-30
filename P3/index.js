@@ -17,6 +17,15 @@ let y = 10;
 let velx = 3;
 let vely = 1;
 
+marcador.innerHTML = `Score: ${score}`;
+
+reset.addEventListener("click", () => {
+    localStorage.setItem("score", "0");
+    score = 0;
+    marcador.innerHTML = `Score: 0`;
+    dibujarbloques();
+});
+
 //-- Funcion principal de animacion
 function update()
 {
