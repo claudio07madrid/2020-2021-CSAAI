@@ -64,10 +64,10 @@ function dibujoraqueta(){
 
 //Variables necesarios para los ladrillos
 const ladrillo = {
-    f: 5, //filas
-    c: 9, //columnas
+    f: 6, //filas
+    c: 10, //columnas
     alt: 20, //altura de ladrillo
-    anch: 30, //anchura de ladrillo
+    anch: 70, //anchura de ladrillo
     padding: 10, //espacio alrededor del ladrillo
     visible: true //estado del ladrillo: activo o no
 }
@@ -102,8 +102,8 @@ for (let i = 0; i < ladrillo.f; i++){
 }
 
 
-for (let i = 0; i < ladrillo.f; i++){
-    for(let j = 0; j < ladrillo.c; j++){
+for (let i = 1; i < ladrillo.f; i++){
+    for(let j = 1; j < ladrillo.c; j++){
       //si el ladrillo es visible se pinta
       if (ladrillos[i][j].visible){
           ctx.beginPath();
@@ -123,7 +123,7 @@ for (let i = 0; i < ladrillo.f; i++){
   }
   if(y + vely < radiobola) {
       vely = -vely;
-  }else if(y + vely > canvas.height - radiobola - 10){
+  }else if(y + vely > canvas.height - radiobola){
       if(x > raquetaX && x <raquetaX + raquetaWidth){
           vely = -vely;
       }
