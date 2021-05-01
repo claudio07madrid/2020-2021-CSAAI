@@ -26,12 +26,12 @@ function update()
   //-- (física del movimiento rectilineo uniforme)
 
    //-- Condicion de rebote en extremos verticales del canvas
-   if (x < 0 || x >= (canvas.width - 20) ) {
+   if (x < 0 || x >= (canvas.width - 10) ) {
     velx = -velx;
   }
 
   //-- Condición de rebote en extremos horizontales del canvas
-  if (y <= 0 || y > 430) {
+  if (y <= 0 || y > 440) {
     vely = -vely;
   }
 
@@ -44,7 +44,7 @@ function update()
 
   //-- 3) Dibujar los elementos visibles
   ctx.beginPath();
-    ctx.rect(x, y, 20, 20);
+    ctx.arc(x, y, 10, 0,Math.PI*2);
 
     //-- Dibujar
     ctx.fillStyle = 'red';
