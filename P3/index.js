@@ -17,10 +17,23 @@ let y = 10;
 let velx = 3;
 let vely = 1;
 
+//Definimos la raqueta
+var raquetaHeight = 10;
+var raquetaWidth = 75;
+var raquetaX = (canvas.width - raquetaWidth)/2;
+
+function dibujoraqueta(){
+    ctx.beginPath();
+    ctx.rect(raquetaX, canvas.height-raquetaHeight, raquetaWidth, raquetaHeight);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+}
+
 //-- Funcion principal de animacion
-function update() 
-{
+function update(){
   console.log("test");
+  
   //-- Algoritmo de animacion:
   //-- 1) Actualizar posicion del  elemento
   //-- (física del movimiento rectilineo uniforme)
@@ -41,6 +54,7 @@ function update()
 
   //-- 2) Borrar el canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  dibujoraqueta();
 
   //-- 3) Dibujar los elementos visibles
   ctx.beginPath();
