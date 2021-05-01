@@ -3,7 +3,7 @@ console.log("Ejecutando JS...");
 const canvas = document.getElementById("canvas");
 
 //-- Definir el tamaño del canvas
-canvas.width = 900;
+canvas.width = 960;
 canvas.height = 450;
 
 //-- Obtener el contexto del canvas
@@ -12,10 +12,10 @@ const ctx = canvas.getContext("2d");
 //Variables que influyen en la colisión
 var radiobola = 10;//radio de la pelota
 var x = canvas.width/2;
-var y = canvas.height - 30;
+var y = canvas.height - 10;
 //velocidades
-var velx = 2;
-var vely = -2;
+var velx = 3;
+var vely = -3;
 
 //Dibujamos la bola
 function dibujobola(){
@@ -68,22 +68,13 @@ const ladrillo = {
     c: 10, //columnas
     alt: 20, //altura de ladrillo
     anch: 70, //anchura de ladrillo
-    padding: 10, //espacio alrededor del ladrillo
+    padding: 20, //espacio alrededor del ladrillo
     visible: true //estado del ladrillo: activo o no
 }
 
-
-//-- Funcion principal de animacion
-function update(){
-  console.log("test");
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  dibujoraqueta();
-  dibujobola();
-
-
 //Estructura de los ladrillos, inicialmente está vacío
 const ladrillos = [];
+
 
 //Recorrer todas las filas
 for (let i = 0; i < ladrillo.f; i++){
@@ -101,6 +92,13 @@ for (let i = 0; i < ladrillo.f; i++){
     }
 }
 
+//-- Funcion principal de animacion
+function update(){
+  console.log("test");
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  dibujoraqueta();
+  dibujobola();
 
 for (let i = 1; i < ladrillo.f; i++){
     for(let j = 1; j < ladrillo.c; j++){
@@ -115,6 +113,18 @@ for (let i = 1; i < ladrillo.f; i++){
     }
 }
 
+for (let i = 0; i < ladrillo.f; i++) {
+    for (let j = 0; j < ladrillo.c; j++) {
+      if (ladrillos[i][j].visible) {
+        if ((y >= ladrillos[i][j].y) && (y <= (ladrillos[i][j].y + 15))){
+          if ((x >= ladrillos[i][j].x) && (x <= (ladrillos[i][j].x + 35))){
+            ladrillos[i][j].visible = false;
+            vely = -vely;
+          }
+        }
+      }
+    }
+  }
 
   //Definimos el movimiento de la pelota
 
