@@ -1,12 +1,12 @@
-console.log("Ejecutando juego");
+console.log("Ejecutando JS...");
 
 const canvas = document.getElementById("canvas");
-const reset = document.querySelector(".reset");
-const marcador = document.querySelector(".score");
 
-canvas.width = 1000;
-canvas.height = 500;
+//-- Definir el tamaño del canvas
+canvas.width = 900;
+canvas.height = 450;
 
+//-- Obtener el contexto del canvas
 const ctx = canvas.getContext("2d");
 
 //-- Coordenadas del objeto
@@ -17,20 +17,9 @@ let y = 10;
 let velx = 3;
 let vely = 1;
 
-marcador.innerHTML = `Score: ${score}`;
-
-reset.addEventListener("click", () => {
-    localStorage.setItem("score", "0");
-    score = 0;
-    marcador.innerHTML = `Score: 0`;
-    dibujarbloques();
-});
-
 //-- Funcion principal de animacion
-function update()
+function update() 
 {
-    dibujarbloques(); 
-
   console.log("test");
   //-- Algoritmo de animacion:
   //-- 1) Actualizar posicion del  elemento
@@ -42,7 +31,7 @@ function update()
   }
 
   //-- Condición de rebote en extremos horizontales del canvas
-  if (y <= 0 || y > 480) {
+  if (y <= 0 || y > 430) {
     vely = -vely;
   }
 
@@ -69,51 +58,7 @@ function update()
 
   //-- 4) Volver a ejecutar update cuando toque
   requestAnimationFrame(update);
-
-    ctx.font = "20px Arial";
-    ctx.fillStyle = 'white';
-    ctx.fillText("Score:", 10, 30);
-    ctx.fillText("Lifes:",900,30)
-}
-
-
-var filas = 5;
-var columnas = 9;
-var ancho = 50;
-var alto = 20;
-var relleno = 20;
-var izq = 35;
-var arriba = 30;
-
-var bloques = [];
-
-function generarbloques(){
-    for (let c = 0; c < columnas; c++) {
-        bloques[c] = [];
-        for (let f = 0; f < filas; f++){
-            bloques[c][f] = {x: 0, y: 0, status: 1};
-        }
-    }
-}
-
-function dibujarbloques(){
-    for (var c = 0; c < columnas; c++){
-       for (var f = 0; f < filas; f++){
-            if(bloques[c][f].status === 1){
-                var bloqueX = c * (ancho + relleno) + izq;
-                var bloqueY = f * (ancho + relleno) + arriba;
-                bloques[c][f].x = bloqueX;
-                bloques[c][f].y = bloqueY;
-                ctx.beginPath();
-                ctx.rect(bloqueX, bloqueY, ancho, alto);
-                ctx.fillStyle = "#230c33";
-                ctx.fill();
-                ctx.closePath();
-            }
-        }
-    }
 }
 
 //-- ¡Que empiece la función!
-generarbloques();
 update();
