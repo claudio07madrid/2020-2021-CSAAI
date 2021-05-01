@@ -93,6 +93,12 @@ function update(){
     ctx.stroke()
   ctx.closePath();
 
+  if(rightPressed && raquetaX < canvas.width - raquetaWidth){
+      raquetaX += 7;
+  }else if(leftPressed && raquetaX > 0) {
+      raquetaX -= 7;
+  }
+
   //-- 4) Volver a ejecutar update cuando toque
   requestAnimationFrame(update);
 }
