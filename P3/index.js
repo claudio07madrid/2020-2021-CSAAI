@@ -17,6 +17,29 @@ let y = 10;
 let velx = 3;
 let vely = 1;
 
+//Definimos el movimiento de la raqueta
+var rightPressed = false;
+var leftPressed = false;
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+
+//Función para cuando se mantiene pulsado el botón
+function keyDownHandler(e) {
+    if(e.keyCode == 39) {
+        rightPressed = true;
+    }else if(e.keyCode == 37){
+        leftPressed = true;
+    }
+}
+//Función para cuando se levanta el dedo del botón
+function keyUpHandler(e) {
+    if(e.keyCode == 39){
+        rightPressed = false;
+    }else if(e.keyCode == 37){
+        leftPressed = false;
+    }
+}
+
 //Definimos la raqueta
 var raquetaHeight = 10;
 var raquetaWidth = 75;
@@ -33,7 +56,7 @@ function dibujoraqueta(){
 //-- Funcion principal de animacion
 function update(){
   console.log("test");
-  
+
   //-- Algoritmo de animacion:
   //-- 1) Actualizar posicion del  elemento
   //-- (física del movimiento rectilineo uniforme)
