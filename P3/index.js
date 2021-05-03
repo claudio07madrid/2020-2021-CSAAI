@@ -15,9 +15,14 @@ var y = canvas.height - 10;//Punto de inicio de la bola (coordenada y)
 //velocidades
 var velx = 3;
 var vely = -3;
+//Variable de juego
+var play = true;
 
 //Dibujamos la bola
 function dibujobola(){
+    if(!play){
+        return;
+    }
     ctx.beginPath();
     ctx.arc(x, y, radiobola, 0, Math.PI*2);
     ctx.fillStyle = "#FFFB74";
@@ -30,6 +35,23 @@ var rightPressed = false;
 var leftPressed = false;
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+
+
+
+//Definimos la raqueta
+var raquetaHeight = 10;
+var raquetaWidth = 75;
+var raquetaX = (canvas.width - raquetaWidth)/2;
+
+//Función que dibuja la raqueta
+function dibujoraqueta(){
+    ctx.beginPath();
+    ctx.rect(raquetaX, canvas.height-raquetaHeight, raquetaWidth, raquetaHeight);
+    ctx.fillStyle = "#B802AF";
+    ctx.fill();
+    ctx.closePath();
+}
+
 
 //Función para cuando se mantiene pulsado el botón
 function keyDownHandler(e) {
@@ -46,20 +68,6 @@ function keyUpHandler(e) {
     }else if(e.keyCode == 37){
         leftPressed = false;
     }
-}
-
-//Definimos la raqueta
-var raquetaHeight = 10;
-var raquetaWidth = 75;
-var raquetaX = (canvas.width - raquetaWidth)/2;
-
-//Función que dibuja la raqueta
-function dibujoraqueta(){
-    ctx.beginPath();
-    ctx.rect(raquetaX, canvas.height-raquetaHeight, raquetaWidth, raquetaHeight);
-    ctx.fillStyle = "#B802AF";
-    ctx.fill();
-    ctx.closePath();
 }
 
 //Variables necesarios para los ladrillos
@@ -93,7 +101,7 @@ for (let i = 0; i < ladrillo.f; i++){
 }
 
 //Variables para las vidas y la puntuación
-var numVidas = 1;
+var numVidas = 3;
 var puntuacion = 0;
 
 //Función para mostrar las vidas
@@ -116,6 +124,7 @@ function update(){
   console.log("test");
   document.getElementById("gameovergif").style.display = "none";
   document.getElementById("youwingif").style.display = "none";
+  document.getElementById("play_again").style.display = "none";
   
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -147,13 +156,6 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
             ladrillos[i][j].visible = false;
             vely = -vely;
             puntuacion += 1;
-          }else if(puntuacion == 2){
-            velx = 0;
-            vely = 0;
-            raquetaX = (canvas.width - raquetaWidth)/2;
-            document.getElementById("canvas").style.display = "none";
-            document.getElementById("youwingif").style.display = "block";
-            
           }
         }
       }
@@ -188,6 +190,16 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
       raquetaX = (canvas.width - raquetaWidth)/2;
       document.getElementById("canvas").style.display = "none";
       document.getElementById("gameovergif").style.display = "block";
+      document.getElementById("play_again").style.display = "";
+  }
+
+  if(puntuacion == 45){
+    velx = 0;
+    vely = 0;
+    raquetaX = (canvas.width - raquetaWidth)/2;
+    document.getElementById("canvas").style.display = "none";
+    document.getElementById("youwingif").style.display = "block";
+    document.getElementById("play_again").style.display = "";
   }
 
   if(rightPressed && raquetaX < canvas.width - raquetaWidth){
