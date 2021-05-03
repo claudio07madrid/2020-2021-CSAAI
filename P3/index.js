@@ -93,7 +93,7 @@ for (let i = 0; i < ladrillo.f; i++){
 }
 
 //Variables para las vidas y la puntuación
-var numVidas = 3;
+var numVidas = 1;
 var puntuación = 0;
 
 //Función para mostrar las vidas
@@ -114,6 +114,8 @@ function points(){
 //-- Funcion principal de animacion
 function update(){
   console.log("test");
+  document.getElementById("gameovergif").style.display = "none";
+  
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   dibujoraqueta();
@@ -172,6 +174,12 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
       y = canvas.height - 10;
       raquetaX = (canvas.width - raquetaWidth)/2;
       numVidas -= 1;
+  }else if(numVidas == 0){
+      velx = 0;
+      vely = 0;
+      raquetaX = (canvas.width - raquetaWidth)/2;
+      document.getElementById("canvas").style.display = "none";
+      document.getElementById("gameovergif").style.display = "block";
   }
 
   if(rightPressed && raquetaX < canvas.width - raquetaWidth){

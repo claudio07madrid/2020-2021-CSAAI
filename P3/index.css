@@ -4,5 +4,18 @@ canvas{
     border-width: 5px;
     border-color:red;
     border-radius: 5px;
-    margin-left: 10cm;
+    margin-left: 12cm;
+    margin-top: 3cm;
+}
+
+#gameovergif{
+    width: 20cm;
+    height: 15cm;
+    margin-left: 15cm;
+    margin-top: 3cm;
+}
+
+body{
+    background-image: url(fondoretro.jpg);
+    size: inherit;
 }
