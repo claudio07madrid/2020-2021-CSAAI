@@ -1,8 +1,13 @@
+body{
+    background-image: url(fondoretro.jpg);
+    size: inherit;
+}
+
 canvas{
-    background-color: black;
+    background-color: #031587;
     border-style: solid;
     border-width: 5px;
-    border-color:red;
+    border-color: #B802AF;
     border-radius: 5px;
     margin-left: 12cm;
     margin-top: 3cm;
@@ -15,7 +20,11 @@ canvas{
     margin-top: 3cm;
 }
 
-body{
-    background-image: url(fondoretro.jpg);
-    size: inherit;
+#youwingif{
+    width: 15cm;
+    height: 10cm;
+    margin-left: 17.5cm;
+    margin-top: 3cm;
+
 }
+

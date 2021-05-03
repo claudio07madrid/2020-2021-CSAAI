@@ -20,7 +20,7 @@ var vely = -3;
 function dibujobola(){
     ctx.beginPath();
     ctx.arc(x, y, radiobola, 0, Math.PI*2);
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "#FFFB74";
     ctx.fill();
     ctx.closePath();
 }
@@ -57,7 +57,7 @@ var raquetaX = (canvas.width - raquetaWidth)/2;
 function dibujoraqueta(){
     ctx.beginPath();
     ctx.rect(raquetaX, canvas.height-raquetaHeight, raquetaWidth, raquetaHeight);
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "#B802AF";
     ctx.fill();
     ctx.closePath();
 }
@@ -94,7 +94,7 @@ for (let i = 0; i < ladrillo.f; i++){
 
 //Variables para las vidas y la puntuación
 var numVidas = 1;
-var puntuación = 0;
+var puntuacion = 0;
 
 //Función para mostrar las vidas
 function lifes(){
@@ -106,7 +106,7 @@ function lifes(){
 //Función para mostrar la puntuación
 function points(){
     ctx.fillStyle = "white";
-    ctx.fillText("Puntuación:" + puntuación, 780, 25);
+    ctx.fillText("Puntuación:" + puntuacion, 780, 25);
     ctx.font = "24px Arial";
     
 }
@@ -115,6 +115,7 @@ function points(){
 function update(){
   console.log("test");
   document.getElementById("gameovergif").style.display = "none";
+  document.getElementById("youwingif").style.display = "none";
   
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -130,7 +131,7 @@ for (let i = 1; i < ladrillo.f; i++){//Inicializo en 1 en vez de en 0 para poder
       if (ladrillos[i][j].visible){
           ctx.beginPath();
           ctx.rect(ladrillos[i][j].x, ladrillos[i][j].y, ladrillo.anch, ladrillo.alt);
-          ctx.fillStyle = 'red';
+          ctx.fillStyle = "#B802AF";
           ctx.fill();
           ctx.closePath();
       }
@@ -145,7 +146,14 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
           if ((x >= ladrillos[i][j].x) && (x <= (ladrillos[i][j].x + 70))){
             ladrillos[i][j].visible = false;
             vely = -vely;
-            puntuación += 1;
+            puntuacion += 1;
+          }else if(puntuacion == 2){
+            velx = 0;
+            vely = 0;
+            raquetaX = (canvas.width - raquetaWidth)/2;
+            document.getElementById("canvas").style.display = "none";
+            document.getElementById("youwingif").style.display = "block";
+            
           }
         }
       }
