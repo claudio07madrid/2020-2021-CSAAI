@@ -192,7 +192,7 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
       document.getElementById("gameovergif").style.display = "block";
       document.getElementById("play_again").style.display = "";
   }
-
+//Definimos que ocurre cuando se destruyen todos los bloques(ganamos el juego)
   if(puntuacion == 45){
     velx = 0;
     vely = 0;
