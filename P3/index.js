@@ -100,7 +100,15 @@ var puntuación = 0;
 function lifes(){
     ctx.fillStyle = "white";
     ctx.fillText("Vidas:" +numVidas, 20, 25);
-    ctx.font = "24px Arial"
+    ctx.font = "24px Arial";
+}
+
+//Función para mostrar la puntuación
+function points(){
+    ctx.fillStyle = "white";
+    ctx.fillText("Puntuación:" + puntuación, 780, 25);
+    ctx.font = "24px Arial";
+    
 }
 
 //-- Funcion principal de animacion
@@ -111,6 +119,7 @@ function update(){
   dibujoraqueta();
   dibujobola();
   lifes();
+  points();
 //Bucle para pintar los ladrillos
 //Recorre todas las filas y columnas
 for (let i = 1; i < ladrillo.f; i++){//Inicializo en 1 en vez de en 0 para poder despegar los ladrillos del borde
@@ -134,6 +143,7 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
           if ((x >= ladrillos[i][j].x) && (x <= (ladrillos[i][j].x + 70))){
             ladrillos[i][j].visible = false;
             vely = -vely;
+            puntuación += 1;
           }
         }
       }
@@ -161,6 +171,7 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
       x = canvas.width/2;
       y = canvas.height - 10;
       raquetaX = (canvas.width - raquetaWidth)/2;
+      numVidas -= 1;
   }
 
   if(rightPressed && raquetaX < canvas.width - raquetaWidth){
