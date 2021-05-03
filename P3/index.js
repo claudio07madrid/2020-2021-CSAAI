@@ -3,7 +3,7 @@ console.log("Ejecutando JS...");
 const canvas = document.getElementById("canvas");
 
 //-- Definir el tamaño del canvas
-canvas.width = 960;
+canvas.width = 950;
 canvas.height = 450;
 
 //-- Obtener el contexto del canvas
@@ -11,8 +11,8 @@ const ctx = canvas.getContext("2d");
 
 //Variables que influyen en la colisión
 var radiobola = 10;//radio de la pelota
-var x = canvas.width/2;
-var y = canvas.height - 10;
+var x = canvas.width/2;//Punto de inicio de la bola (coordenada x)
+var y = canvas.height - 10;//Punto de inicio de la bola (coordenada y)
 //velocidades
 var velx = 3;
 var vely = -3;
@@ -26,7 +26,7 @@ function dibujobola(){
     ctx.closePath();
 }
 
-//Definimos el movimiento de la raqueta
+//Definimos el movimiento de la raqueta. Lo haremos con los botones de flechas del teclado
 var rightPressed = false;
 var leftPressed = false;
 document.addEventListener("keydown", keyDownHandler, false);
@@ -54,6 +54,7 @@ var raquetaHeight = 10;
 var raquetaWidth = 75;
 var raquetaX = (canvas.width - raquetaWidth)/2;
 
+//Función que dibuja la raqueta
 function dibujoraqueta(){
     ctx.beginPath();
     ctx.rect(raquetaX, canvas.height-raquetaHeight, raquetaWidth, raquetaHeight);
@@ -99,9 +100,10 @@ function update(){
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   dibujoraqueta();
   dibujobola();
-
-for (let i = 1; i < ladrillo.f; i++){
-    for(let j = 1; j < ladrillo.c; j++){
+//Bucle para pintar los ladrillos
+//Recorre todas las filas y columnas
+for (let i = 1; i < ladrillo.f; i++){//Inicializo en 1 en vez de en 0 para poder despegar los ladrillos del borde
+    for(let j = 1; j < ladrillo.c; j++){////Inicializo en 1 en vez de en 0 para poder despegar los ladrillos del borde
       //si el ladrillo es visible se pinta
       if (ladrillos[i][j].visible){
           ctx.beginPath();
@@ -113,11 +115,12 @@ for (let i = 1; i < ladrillo.f; i++){
     }
 }
 
-for (let i = 0; i < ladrillo.f; i++) {
-    for (let j = 0; j < ladrillo.c; j++) {
+//Bucle para la colisión de la pelota con los ladrillos.
+for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en el bucle de arriba
+    for (let j = 1; j < ladrillo.c; j++) {
       if (ladrillos[i][j].visible) {
-        if ((y >= ladrillos[i][j].y) && (y <= (ladrillos[i][j].y + 15))){
-          if ((x >= ladrillos[i][j].x) && (x <= (ladrillos[i][j].x + 35))){
+        if ((y >= ladrillos[i][j].y) && (y <= (ladrillos[i][j].y + 20))){
+          if ((x >= ladrillos[i][j].x) && (x <= (ladrillos[i][j].x + 70))){
             ladrillos[i][j].visible = false;
             vely = -vely;
           }
@@ -126,7 +129,7 @@ for (let i = 0; i < ladrillo.f; i++) {
     }
   }
 
-  //Definimos el movimiento de la pelota
+  //Definimos el movimiento de la pelota y que ocurre cuando choca con la raqueta
 
   if(x + velx > canvas.width - radiobola || x + velx < radiobola){
       velx = -velx;
