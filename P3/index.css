@@ -4,7 +4,5 @@ canvas{
     border-width: 5px;
     border-color:red;
     border-radius: 5px;
-}
-p{
-    color: white;
+    margin-left: 10cm;
 }

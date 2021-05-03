@@ -1,7 +1,6 @@
 console.log("Ejecutando JS...");
 
 const canvas = document.getElementById("canvas");
-
 //-- Definir el tamaño del canvas
 canvas.width = 950;
 canvas.height = 450;
@@ -93,6 +92,17 @@ for (let i = 0; i < ladrillo.f; i++){
     }
 }
 
+//Variables para las vidas y la puntuación
+var numVidas = 3;
+var puntuación = 0;
+
+//Función para mostrar las vidas
+function lifes(){
+    ctx.fillStyle = "white";
+    ctx.fillText("Vidas:" +numVidas, 20, 25);
+    ctx.font = "24px Arial"
+}
+
 //-- Funcion principal de animacion
 function update(){
   console.log("test");
@@ -100,6 +110,7 @@ function update(){
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   dibujoraqueta();
   dibujobola();
+  lifes();
 //Bucle para pintar los ladrillos
 //Recorre todas las filas y columnas
 for (let i = 1; i < ladrillo.f; i++){//Inicializo en 1 en vez de en 0 para poder despegar los ladrillos del borde
@@ -140,6 +151,16 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
       if(x > raquetaX && x <raquetaX + raquetaWidth){
           vely = -vely;
       }
+  }
+
+  //Definimos lo que ocurre cuando la pelota toca el suelo (pérdida de vida)
+
+  if (y >= canvas.height){
+      velx = 3;
+      vely = -3;
+      x = canvas.width/2;
+      y = canvas.height - 10;
+      raquetaX = (canvas.width - raquetaWidth)/2;
   }
 
   if(rightPressed && raquetaX < canvas.width - raquetaWidth){
