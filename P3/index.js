@@ -2,7 +2,7 @@ console.log("Ejecutando JS...");
 
 const canvas = document.getElementById("canvas");
 //-- Definir el tamaño del canvas
-canvas.width = 950;
+canvas.width = 1000;
 canvas.height = 450;
 
 //-- Obtener el contexto del canvas
@@ -85,10 +85,10 @@ window.onkeydown = (e) => {
 //Variables necesarios para los ladrillos
 const ladrillo = {
     f: 8, //filas
-    c: 12, //columnas
+    c: 13, //columnas
     alt: 20, //altura de ladrillo
     anch: 70, //anchura de ladrillo
-    padding: 5, //espacio alrededor del ladrillo
+    padding: 1, //espacio alrededor del ladrillo
     visible: true //estado del ladrillo: activo o no
 }
 
@@ -119,14 +119,14 @@ var puntuacion = 0;
 //Función para mostrar las vidas
 function lifes(){
     ctx.fillStyle = "white";
-    ctx.fillText("Lifes:" +numVidas, 20, 20);
+    ctx.fillText("Lifes:" +numVidas, 10, 18);
     ctx.font = "20px Arial";
 }
 
 //Función para mostrar la puntuación
 function points(){
     ctx.fillStyle = "white";
-    ctx.fillText("Score:" + puntuacion, 780, 20);
+    ctx.fillText("Score:" + puntuacion, 920, 18);
     ctx.font = "20px Arial";
     
 }
@@ -216,7 +216,7 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
 
   }
 //Definimos que ocurre cuando se destruyen todos los bloques(ganamos el juego)
-  if(puntuacion == 77){
+  if(puntuacion == 84){
     velx = 0;
     vely = 0;
     raquetaX = (canvas.width - raquetaWidth)/2;
