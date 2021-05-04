@@ -18,11 +18,11 @@ var vely = 0;
 var aleat = (Math.random() * 7) + 1;
 
 //Sonidos mp3
-const You_Win = new Audio('youwin.mp3');
-const Game_Over = new Audio('game_over.mp3');
-const Clash = new Audio('clash.mp3')
-const Rebound = new Audio('rebound.mp3');
-const Lose_Life = new Audio('lose_life.mp3')
+const You_Win = new Audio('youwin.mp3');//Cuando se gana la partida
+const Game_Over = new Audio('game_over.mp3');//Cuando se pierde la partida
+const Clash = new Audio('clash.mp3');//Cuando se rompe el ladrillo
+const Rebound = new Audio('rebound.mp3');//Cuando rebota contra la raqueta
+const Lose_Life = new Audio('lose_life.mp3');//Cuando se pierde una vida
 
 //Dibujamos la bola
 function dibujobola(){
@@ -41,10 +41,10 @@ document.addEventListener("keyup", keyUpHandler, false);
 
 
 
-//Definimos la raqueta
-var raquetaHeight = 10;
-var raquetaWidth = 75;
-var raquetaX = (canvas.width - raquetaWidth)/2;
+//Definimos las variables de la raqueta
+var raquetaHeight = 10;//Largo
+var raquetaWidth = 75;//Ancho
+var raquetaX = (canvas.width - raquetaWidth)/2;//Posición inicial de la raqueta
 
 //Función que dibuja la raqueta
 function dibujoraqueta(){
@@ -56,7 +56,7 @@ function dibujoraqueta(){
 }
 
 
-//Función para cuando se mantiene pulsado el botón
+//Función para cuando se mantiene pulsado el botón,(botones de flecha, izquierda y derecha)
 function keyDownHandler(e) {
     if(e.keyCode == 39) {
         rightPressed = true;
@@ -64,7 +64,7 @@ function keyDownHandler(e) {
         leftPressed = true;
     }
 }
-//Función para cuando se levanta el dedo del botón
+//Función para cuando se levanta el dedo del botón,(botones de flecha, izquierda y derecha)
 function keyUpHandler(e) {
     if(e.keyCode == 39){
         rightPressed = false;
@@ -73,7 +73,7 @@ function keyUpHandler(e) {
     }
 }
 
-//Función para empezar a jugar
+//Función para empezar a jugar, al pulsar la barra espaciadora
 window.onkeydown = (e) => {
     if (e.keyCode  == 32){
             document.getElementById("parrafo").style.display = "none";
@@ -134,8 +134,8 @@ function points(){
 //-- Funcion principal de animacion
 function update(){
   console.log("test");
-  document.getElementById("gameovergif").style.display = "none";
-  document.getElementById("youwingif").style.display = "none";
+  document.getElementById("gameovergif").style.display = "none";//"none para no mostrar estos gifs a lo largo de la partida"
+  document.getElementById("youwingif").style.display = "none";//solo quiero que lo muestre al final
   document.getElementById("play_again").style.display = "none";
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   dibujoraqueta();
@@ -182,10 +182,9 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
       vely = -vely;
   }else if(y + vely > canvas.height - radiobola){
       if(x > raquetaX && x <raquetaX + raquetaWidth){
-          vely = -vely;
-          let puntoColision = x - (raquetaX + raquetaWidth/2);
-          puntoColision = puntoColision / (raquetaWidth/2);
-          let angulo = puntoColision * Math.PI/3;
+          let puntoColision = x - (raquetaX + raquetaWidth/2);//A partir de aquí, defino la mejora
+          puntoColision = puntoColision / (raquetaWidth/2);// en la cual la bola, depende en que parte toque la
+          let angulo = puntoColision * Math.PI/3;// raqueta, rebotará con un angulo distinto
           velx = aleat * Math.sin(angulo);
           vely = -aleat * Math.cos(angulo);
           Rebound.play();
@@ -207,8 +206,8 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
       velx = 0;
       vely = 0;
       raquetaX = (canvas.width - raquetaWidth)/2;
-      document.getElementById("canvas").style.display = "none";
-      document.getElementById("gameovergif").style.display = "block";
+      document.getElementById("canvas").style.display = "none";//Hacemos que el canvas desaparezca para que de pie a los gifs
+      document.getElementById("gameovergif").style.display = "block";// y al botón
       document.getElementById("play_again").style.display = "";
       document.getElementById("parrafo1").style.display = "none";
       Game_Over.play();
@@ -220,20 +219,21 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
     velx = 0;
     vely = 0;
     raquetaX = (canvas.width - raquetaWidth)/2;
-    document.getElementById("canvas").style.display = "none";
-    document.getElementById("youwingif").style.display = "block";
+    document.getElementById("canvas").style.display = "none";//Hacemos que el canvas desaparezca para que de pie a los gifs
+    document.getElementById("youwingif").style.display = "block";//y al botón
     document.getElementById("play_again").style.display = "";
     document.getElementById("parrafo1").style.display = "none";
     You_Win.play();
   }
 
+  //Definimos el movimiento y la velocidad de la raqueta
   if(rightPressed && raquetaX < canvas.width - raquetaWidth){
       raquetaX += 7;
   }else if(leftPressed && raquetaX > 0) {
       raquetaX -= 7;
   }
 
-  //-- 4) Volver a ejecutar update cuando toque
+  //Volver a ejecutar update cuando toque
   x += velx;
   y += vely;
   requestAnimationFrame(update);
