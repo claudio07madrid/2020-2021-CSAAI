@@ -82,11 +82,11 @@ window.onkeydown = (e) => {
 }
 //Variables necesarios para los ladrillos
 const ladrillo = {
-    f: 6, //filas
-    c: 10, //columnas
+    f: 8, //filas
+    c: 12, //columnas
     alt: 20, //altura de ladrillo
     anch: 70, //anchura de ladrillo
-    padding: 20, //espacio alrededor del ladrillo
+    padding: 5, //espacio alrededor del ladrillo
     visible: true //estado del ladrillo: activo o no
 }
 
@@ -208,7 +208,7 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
 
   }
 //Definimos que ocurre cuando se destruyen todos los bloques(ganamos el juego)
-  if(puntuacion == 45){
+  if(puntuacion == 77){
     velx = 0;
     vely = 0;
     raquetaX = (canvas.width - raquetaWidth)/2;
