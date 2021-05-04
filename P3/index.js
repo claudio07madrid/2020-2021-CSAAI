@@ -22,6 +22,7 @@ const Game_Over = new Audio('game_over.mp3');
 const Clash = new Audio('clash.mp3')
 const Rebound = new Audio('rebound.mp3');
 const Lose_Life = new Audio('lose_life.mp3')
+
 //Dibujamos la bola
 function dibujobola(){
     ctx.beginPath();
@@ -181,6 +182,11 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
   }else if(y + vely > canvas.height - radiobola){
       if(x > raquetaX && x <raquetaX + raquetaWidth){
           vely = -vely;
+          let puntoColision = x - (raquetaX + raquetaWidth/2);
+          puntoColision = puntoColision / (raquetaWidth/2);
+          let angulo = puntoColision * Math.PI/3;
+          velx = 3 * Math.sin(angulo);
+          vely = -3 * Math.cos(angulo);
           Rebound.play();
       }
   }
