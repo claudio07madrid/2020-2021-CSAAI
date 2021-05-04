@@ -13,8 +13,8 @@ var radiobola = 10;//radio de la pelota
 var x = canvas.width/2;//Punto de inicio de la bola (coordenada x)
 var y = canvas.height - 10;//Punto de inicio de la bola (coordenada y)
 //velocidades
-var velx = 3;
-var vely = -3;
+var velx = 0;
+var vely = 0;
 //Variable de juego
 var play = true;
 
@@ -46,7 +46,7 @@ var raquetaX = (canvas.width - raquetaWidth)/2;
 //Función que dibuja la raqueta
 function dibujoraqueta(){
     ctx.beginPath();
-    ctx.rect(raquetaX, canvas.height-raquetaHeight, raquetaWidth, raquetaHeight);
+    ctx.ima(raquetaX, canvas.height-raquetaHeight, raquetaWidth, raquetaHeight);
     ctx.fillStyle = "#B802AF";
     ctx.fill();
     ctx.closePath();
@@ -70,6 +70,15 @@ function keyUpHandler(e) {
     }
 }
 
+//Función para empezar a jugar
+window.onkeydown = (e) => {
+    if (e.keyCode  == 32){
+            velx = 3;
+            vely = -3;
+            document.getElementById("parrafo").style.display = "none";
+  
+    }
+}
 //Variables necesarios para los ladrillos
 const ladrillo = {
     f: 6, //filas
@@ -107,14 +116,14 @@ var puntuacion = 0;
 //Función para mostrar las vidas
 function lifes(){
     ctx.fillStyle = "white";
-    ctx.fillText("Vidas:" +numVidas, 20, 25);
+    ctx.fillText("Lifes:" +numVidas, 20, 25);
     ctx.font = "24px Arial";
 }
 
 //Función para mostrar la puntuación
 function points(){
     ctx.fillStyle = "white";
-    ctx.fillText("Puntuación:" + puntuacion, 780, 25);
+    ctx.fillText("Score:" + puntuacion, 780, 25);
     ctx.font = "24px Arial";
     
 }
@@ -125,8 +134,6 @@ function update(){
   document.getElementById("gameovergif").style.display = "none";
   document.getElementById("youwingif").style.display = "none";
   document.getElementById("play_again").style.display = "none";
-  
-
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   dibujoraqueta();
   dibujobola();
@@ -178,8 +185,8 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
   //Definimos lo que ocurre cuando la pelota toca el suelo (pérdida de vida)
 
   if (y >= canvas.height){
-      velx = 3;
-      vely = -3;
+      velx = 0;
+      vely = 0;
       x = canvas.width/2;
       y = canvas.height - 10;
       raquetaX = (canvas.width - raquetaWidth)/2;
@@ -191,6 +198,9 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
       document.getElementById("canvas").style.display = "none";
       document.getElementById("gameovergif").style.display = "block";
       document.getElementById("play_again").style.display = "";
+      document.getElementById("parrafo1").style.display = "none";
+
+
   }
 //Definimos que ocurre cuando se destruyen todos los bloques(ganamos el juego)
   if(puntuacion == 45){
@@ -200,6 +210,7 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
     document.getElementById("canvas").style.display = "none";
     document.getElementById("youwingif").style.display = "block";
     document.getElementById("play_again").style.display = "";
+    document.getElementById("parrafo1").style.display = "none";
   }
 
   if(rightPressed && raquetaX < canvas.width - raquetaWidth){

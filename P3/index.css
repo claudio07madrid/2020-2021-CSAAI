@@ -1,6 +1,5 @@
 body{
     background-image: url(fondoretro.jpg);
-    size: inherit;
 }
 
 canvas{
@@ -36,5 +35,12 @@ canvas{
     font-family: 'Courier New', arial;
     margin-top: 3cm;
     margin-left: 23cm;
+}
+
+p{
+    text-align: center;
+    font-family: 'Courier New', arial;
+    font-size: 30px;
+
 }
 
