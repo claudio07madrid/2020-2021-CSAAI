@@ -165,8 +165,8 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
           if ((x >= ladrillos[i][j].x) && (x <= (ladrillos[i][j].x + 70))){
             ladrillos[i][j].visible = false;
             vely = -vely;
-            puntuacion += 1;
-            Clash.play();
+            puntuacion += 1;//Sumo la puntuación al romper ladrillo
+            Clash.play();//Sonido al romper ladrillo
           }
         }
       }
@@ -187,22 +187,24 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
           let angulo = puntoColision * Math.PI/3;// raqueta, rebotará con un angulo distinto
           velx = aleat * Math.sin(angulo);
           vely = -aleat * Math.cos(angulo);
-          Rebound.play();
+          Rebound.play();//Sonido de rebote contra la raqueta
       }
   }
 
   //Definimos lo que ocurre cuando la pelota toca el suelo (pérdida de vida)
 
   if (y >= canvas.height){
+      //Posiciones y velocidad de la pelota y raqueta al perder vida
       velx = 0;
       vely = 0;
       x = canvas.width/2;
       y = canvas.height - 10;
       raquetaX = (canvas.width - raquetaWidth)/2;
-      numVidas -= 1;
-      Lose_Life.play();
+      numVidas -= 1;//Resto 1 a la variable vida
+      Lose_Life.play();//Sonido
 
   }else if(numVidas == 0){
+      //Posiciones y velocidad de la pelota y raqueta al perder la partida:
       velx = 0;
       vely = 0;
       raquetaX = (canvas.width - raquetaWidth)/2;
@@ -216,6 +218,7 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
   }
 //Definimos que ocurre cuando se destruyen todos los bloques(ganamos el juego)
   if(puntuacion == 84){
+    //Posiciones y velocidad de la pelota y raqueta al ganar la partida:
     velx = 0;
     vely = 0;
     raquetaX = (canvas.width - raquetaWidth)/2;
