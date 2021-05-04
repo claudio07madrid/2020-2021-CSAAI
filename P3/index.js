@@ -15,14 +15,15 @@ var y = canvas.height - 10;//Punto de inicio de la bola (coordenada y)
 //velocidades
 var velx = 0;
 var vely = 0;
-//Variable de juego
-var play = true;
 
+//Sonidos mp3
+const You_Win = new Audio('youwin.mp3');
+const Game_Over = new Audio('game_over.mp3');
+const Clash = new Audio('clash.mp3')
+const Rebound = new Audio('rebound.mp3');
+const Lose_Life = new Audio('lose_life.mp3')
 //Dibujamos la bola
 function dibujobola(){
-    if(!play){
-        return;
-    }
     ctx.beginPath();
     ctx.arc(x, y, radiobola, 0, Math.PI*2);
     ctx.fillStyle = "#FFFB74";
@@ -163,6 +164,7 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
             ladrillos[i][j].visible = false;
             vely = -vely;
             puntuacion += 1;
+            Clash.play();
           }
         }
       }
@@ -179,6 +181,7 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
   }else if(y + vely > canvas.height - radiobola){
       if(x > raquetaX && x <raquetaX + raquetaWidth){
           vely = -vely;
+          Rebound.play();
       }
   }
 
@@ -191,6 +194,7 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
       y = canvas.height - 10;
       raquetaX = (canvas.width - raquetaWidth)/2;
       numVidas -= 1;
+      Lose_Life.play();
   }else if(numVidas == 0){
       velx = 0;
       vely = 0;
@@ -199,6 +203,7 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
       document.getElementById("gameovergif").style.display = "block";
       document.getElementById("play_again").style.display = "";
       document.getElementById("parrafo1").style.display = "none";
+      Game_Over.play();
 
 
   }
@@ -211,6 +216,7 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
     document.getElementById("youwingif").style.display = "block";
     document.getElementById("play_again").style.display = "";
     document.getElementById("parrafo1").style.display = "none";
+    You_Win.play();
   }
 
   if(rightPressed && raquetaX < canvas.width - raquetaWidth){
