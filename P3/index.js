@@ -15,6 +15,7 @@ var y = canvas.height - 10;//Punto de inicio de la bola (coordenada y)
 //velocidades
 var velx = 0;
 var vely = 0;
+var aleat = (Math.random() * 7) + 1;
 
 //Sonidos mp3
 const You_Win = new Audio('youwin.mp3');
@@ -75,9 +76,9 @@ function keyUpHandler(e) {
 //Función para empezar a jugar
 window.onkeydown = (e) => {
     if (e.keyCode  == 32){
-            velx = 3;
-            vely = -3;
             document.getElementById("parrafo").style.display = "none";
+            velx = aleat;
+            vely = -aleat;
   
     }
 }
@@ -185,8 +186,8 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
           let puntoColision = x - (raquetaX + raquetaWidth/2);
           puntoColision = puntoColision / (raquetaWidth/2);
           let angulo = puntoColision * Math.PI/3;
-          velx = 3 * Math.sin(angulo);
-          vely = -3 * Math.cos(angulo);
+          velx = aleat * Math.sin(angulo);
+          vely = -aleat * Math.cos(angulo);
           Rebound.play();
       }
   }
@@ -201,6 +202,7 @@ for (let i = 1; i < ladrillo.f; i++) {//Inicializo en 1 porque igual lo hice en 
       raquetaX = (canvas.width - raquetaWidth)/2;
       numVidas -= 1;
       Lose_Life.play();
+
   }else if(numVidas == 0){
       velx = 0;
       vely = 0;
