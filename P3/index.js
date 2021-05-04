@@ -46,7 +46,7 @@ var raquetaX = (canvas.width - raquetaWidth)/2;
 //Función que dibuja la raqueta
 function dibujoraqueta(){
     ctx.beginPath();
-    ctx.ima(raquetaX, canvas.height-raquetaHeight, raquetaWidth, raquetaHeight);
+    ctx.rect(raquetaX, canvas.height-raquetaHeight, raquetaWidth, raquetaHeight);
     ctx.fillStyle = "#B802AF";
     ctx.fill();
     ctx.closePath();
