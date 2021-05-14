@@ -40,19 +40,34 @@ img.onload = function () {
   //-- tiene un tamaño de 4 * numero de pixeles
   console.log("Total de datos de la imagen: " + npixels * 4)
 
-  //-- Obtener el numero de pixel a partir de su posicion
-  let i = 200 + 50*canvas.width;
-
-  //-- Pixel rojo: canal rojo a tope. Resto de colores a 0
-  //-- La transparencia no se modifica
-  data[i*4] = 255;    //-- Canal Rojo
-  data[i*4 + 1] = 0;  //-- Canal Verde
-  data[i*4 + 2] = 0;  //-- Canal azul
-
-  //-- Poner la imagen modificada en el canvas
-  ctx.putImageData(imgData, 0, 0);
-  
 };
 
+//-- Funcion de retrollamada del deslizador
+deslizador.oninput = () => {
+    //-- Mostrar el nuevo valor del deslizador
+    range_value.innerHTML = deslizador.value;
+  
+    //-- Situar la imagen original en el canvas
+    //-- No se han hecho manipulaciones todavia
+    ctx.drawImage(img, 0,0);
+  
+    //-- Obtener la imagen del canvas en pixeles
+    let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  
+    //-- Obtener el array con todos los píxeles
+    let data = imgData.data
+  
+    //-- Obtener el umbral de rojo del desliador
+    umbral = deslizador.value
+  
+    //-- Filtrar la imagen según el nuevo umbral
+    for (let i = 0; i < data.length; i+=4) {
+      if (data[i] > umbral)
+        data[i] = umbral;
+    }
+  
+    //-- Poner la imagen modificada en el canvas
+    ctx.putImageData(imgData, 0, 0);
+}
 console.log("Fin...");
 
