@@ -1,3 +1,32 @@
 body{
-    background-color: grey;
+    background-image: url('fondo.jpg');
+}
+
+
+.centro{
+    text-align: center;
+    margin-top: 7cm;
+}
+
+
+.izquierda{
+    float: left;
+    margin-left: 5cm;
+}
+
+.derecha {
+    float: right;
+    margin-right: 5cm;
+}
+
+p1{
+    color: burlywood;
+    margin-left: 5cm;
+    font-size: 30px;
+}
+
+p2{
+    color: burlywood;
+    font-size: 30px;
+    margin-left: 3cm;
 }
