@@ -39,6 +39,19 @@ img.onload = function () {
   //-- Puesto que cada pixel ocupa 4 bytes, el array de píxeles
   //-- tiene un tamaño de 4 * numero de pixeles
   console.log("Total de datos de la imagen: " + npixels * 4)
+
+  //-- Obtener el numero de pixel a partir de su posicion
+  let i = 200 + 50*canvas.width;
+
+  //-- Pixel rojo: canal rojo a tope. Resto de colores a 0
+  //-- La transparencia no se modifica
+  data[i*4] = 255;    //-- Canal Rojo
+  data[i*4 + 1] = 0;  //-- Canal Verde
+  data[i*4 + 2] = 0;  //-- Canal azul
+
+  //-- Poner la imagen modificada en el canvas
+  ctx.putImageData(imgData, 0, 0);
+  
 };
 
 console.log("Fin...");
