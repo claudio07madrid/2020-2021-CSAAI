@@ -9,9 +9,8 @@ const ctx = canvas.getContext('2d');
 //-- La imagen no se carga instantaneamente, sino que
 //-- lleva un tiempo. Sólo podemos acceder a ella una vez
 //-- que esté totalmente cargada
-img.onload = function () {
 
-  console.log("Imagen cargada");
+img.onload = function () {
 
   //-- Se establece como tamaño del canvas el mismo
   //-- que el de la imagen original
