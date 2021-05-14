@@ -15,7 +15,7 @@ var y = canvas.height - 10;//Punto de inicio de la bola (coordenada y)
 //velocidades
 var velx = 0;
 var vely = 0;
-var aleat = (Math.random() * 7) + 1;
+var aleat = (Math.random() * 4) + 4;//Variable de velocidad aleatoria
 
 //Sonidos mp3
 const You_Win = new Audio('youwin.mp3');//Cuando se gana la partida

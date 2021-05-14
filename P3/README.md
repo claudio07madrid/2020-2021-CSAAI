@@ -2,6 +2,7 @@
  Las intrucciones del juego son sencillas: 
  Para comenzar a jugar hay que presionar la tecla del espacio.
  Para mover la raqueta, hay que presionar las flechas derecha e izquierda.
+ Hay que tener en cuenta que la velocidad de la bola en cada partida es distinta y aleatoria.
 
  He implementado varias mejoras:
     1º Implemento sonidos al chocar la pelota con la raqueta, al romper los ladrillos, al perder una vida,
