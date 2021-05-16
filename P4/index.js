@@ -18,7 +18,8 @@ const rangeverde_value = document.getElementById('rangeverde_value');
 const rangeazul_value = document.getElementById('rangeazul_value');
 
 const gris = document.getElementById('gris');
-const filtrnegativo = document.getElementById('negativo')
+const filtronegativo = document.getElementById('negativo')
+const colores = document.getElementById('rgb')
 
 //-- Función de retrollamada de imagen cargada
 //-- La imagen no se carga instantaneamente, sino que
@@ -26,6 +27,8 @@ const filtrnegativo = document.getElementById('negativo')
 //-- que esté totalmente cargada
 
 img.onload = function () {
+  document.getElementById('rgb').style.display = 'none'
+
 
   //-- Se establece como tamaño del canvas el mismo
   //-- que el de la imagen original
@@ -148,10 +151,20 @@ console.log("Fin...");
 //Botones y sus respectivas acciones
 gris.onclick = () => {
     grises();
+    document.getElementById('caja').style.display = 'none';//Oculto la caja con los deslizadores, ya que no se deben usar en este filtro
+    document.getElementById('rgb').style.display = 'inline-block'//Muestro el boton de colores
+
 }
 
-filtrnegativo.onclick = () => {
+filtronegativo.onclick = () => {
   negativo();
+  document.getElementById('caja').style.display = 'none';//Oculto la caja con los deslizadores, ya que no se deben usar en este filtro
+  document.getElementById('rgb').style.display = 'inline-block'//Muestro el botón de colores
 }
 
+colores.onclick = () => {
+  color();
+  document.getElementById('caja').style.display = 'inline-block'//Muestro la caja con los deslizadores
+  document.getElementById('rgb').style.display = 'none'//Oculto el botón de colores después de pulsar el mismo
+}
 

@@ -9,6 +9,7 @@
     <title>Práctica 4</title>
 </head>
 <body>
+    <h1>FILTRADO DE IMÁGENES</h1>
     <div class="izquierda">
         <p1>Imagen original</p>
         <img src="audi1.jpg" id="imagen1">
@@ -20,7 +21,7 @@
     </div>
 
     <div class="centro">
-        <fieldset>
+        <fieldset id="caja">
             <p>Establece el umbral de rojo:</p>
             <input type="range" id="deslizadorrojo" min="0" max="255" value="255"/>
             <p id="rangerojo_value">00</p>
@@ -30,11 +31,11 @@
             <p>Establece el umbral de azul:</p>
             <input type="range" id="deslizadorazul" min="0" max="255" value="255"/>
             <p id="rangeazul_value">00</p>   
-            <button id="gris">Grises</button>
-            <button id="negativo">Negativo</button>  
         </fieldset>
-            
     </div>
+    <button id="gris">Grises</button>
+    <button id="negativo">Negativo</button>
+    <button id="rgb">Colores</button>  
   
   
 </body>
