@@ -2,6 +2,7 @@
 let directo = document.getElementById("directo");
 const video1 = document.getElementById("video1");
 const btn_video1 = document.getElementById("btn_video1");
+const btn_video2 = document.getElementById("btn_video2");
 const btn_test = document.getElementById("btn_test");
 const btn_src_on = document.getElementById("btn_src_on");
 
@@ -13,7 +14,7 @@ video1.width=200;
 video1.height=100;
 
 //-- Imagen de Test usada
-const TEST_IMAGE_URL = "test.png";
+const TEST_IMAGE_URL = "";
 
 //-- Imagen estática a mostrar cuando el video no
 //-- ha arrancado
