@@ -18,6 +18,7 @@ const rangeverde_value = document.getElementById('rangeverde_value');
 const rangeazul_value = document.getElementById('rangeazul_value');
 
 const gris = document.getElementById('gris');
+const filtrnegativo = document.getElementById('negativo')
 
 //-- Función de retrollamada de imagen cargada
 //-- La imagen no se carga instantaneamente, sino que
@@ -122,11 +123,30 @@ function grises(){
     }
     ctx.putImageData(imgData, 0, 0);
   }
+  function negativo(){
+    ctx.drawImage(img, 0,0);
+    let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    let data = imgData.data;
+  
+    for ( var i = 0; i < data.length; i+=4 ) {
+        umbralrojo = data[i];
+        umbralverde = data[i+1];
+        umbralazul = data[i+2];
+  
+        data[i] = 255 - umbralrojo;
+        data[i+1] = 255 - umbralverde;
+        data[i+2] = 255 - umbralazul;
+    }
+    ctx.putImageData(imgData, 0, 0 );
+  }
 console.log("Fin...");
 
 gris.onclick = () => {
     grises();
 }
 
+filtrnegativo.onclick = () => {
+  negativo();
+}
 
 
