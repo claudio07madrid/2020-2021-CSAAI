@@ -5,7 +5,6 @@ body{
 
 .centro{
     text-align: center;
-    margin-top: 7cm;
 }
 
 
@@ -21,7 +20,7 @@ body{
 
 p1{
     color: burlywood;
-    margin-left: 4.5cm;
+    margin-left: 3.5cm;
     font-size: 30px;
     font-family: monospace;
 }
@@ -29,16 +28,19 @@ p1{
 p2{
     color: burlywood;
     font-size: 30px;
-    margin-left: 3.5cm;
+    margin-left: 2.5cm;
     font-family: monospace;
 }
 fieldset{
     background-color: burlywood;
     border-style: solid;
     border-color: black;
+    margin-top: 5cm;
 }
 
 button{
     background-color: blanchedalmond;
     width: 80px;
 }
+
+ 
