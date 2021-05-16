@@ -49,12 +49,12 @@ btn_src_on.onclick = () => {
 
 //Boton de FUENTES-OFF
     btn_src_off.onclick = () => {
-    video1.pause();
-    video1.currentTime = 0;
-    video2.pause();
-    video2.currentTime = 0;
-    directo.pause();
-    
+        directo.poster = TEST_IMAGE_URL;
+        video1.poster = TEST_IMAGE_URL;
+        video2.poster = TEST_IMAGE_URL;
+        directo.src = null;
+        video1.src = null;
+        video2.src = null;
 }
 //-- Botón de Test
 btn_test.onclick = () => {
