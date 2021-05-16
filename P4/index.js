@@ -57,6 +57,8 @@ img.onload = function () {
 
 };
 
+
+//Deslizadores. Ejecutan la función color
 deslirojo.oninput = () => {
     color();
 }
@@ -107,6 +109,7 @@ function color(){
     ctx.putImageData(imgData, 0, 0);
 }
 
+//Función para el filtro de grises
 function grises(){
     ctx.drawImage(img, 0,0);
     let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -123,6 +126,7 @@ function grises(){
     }
     ctx.putImageData(imgData, 0, 0);
   }
+  //Función para el filtro negativo.
   function negativo(){
     ctx.drawImage(img, 0,0);
     let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -141,6 +145,7 @@ function grises(){
   }
 console.log("Fin...");
 
+//Botones y sus respectivas acciones
 gris.onclick = () => {
     grises();
 }
