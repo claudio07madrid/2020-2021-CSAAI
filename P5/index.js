@@ -6,6 +6,7 @@ const btn_video1 = document.getElementById("btn_video1");
 const btn_video2 = document.getElementById("btn_video2");
 const btn_test = document.getElementById("btn_test");
 const btn_src_on = document.getElementById("btn_src_on");
+const btn_src_off = document.getElementById("btn_src_off");
 
 
 //-- Establecer las dimensiones de los vídeos
@@ -13,6 +14,8 @@ directo.width=420;
 directo.height=200;
 video1.width=200;  
 video1.height=100;
+video2.width=200;
+video2.height=100;
 
 //-- Imagen de Test usada
 const TEST_IMAGE_URL = "nosignal.gif";
@@ -44,6 +47,15 @@ btn_src_on.onclick = () => {
   directo.poster = TEST_IMAGE_URL;
 };
 
+//Boton de FUENTES-OFF
+    btn_src_off.onclick = () => {
+    video1.pause();
+    video1.currentTime = 0;
+    video2.pause();
+    video2.currentTime = 0;
+    directo.pause();
+    
+}
 //-- Botón de Test
 btn_test.onclick = () => {
     directo.poster = TEST_IMAGE_URL;
@@ -56,12 +68,12 @@ btn_video1.onclick = () => {
     directo.currentTime = video1.currentTime;
     directo.play();
     directo.poster=null;
+};
 
-//-- Botón de Selección de la cámara 1
+//-- Botón de Selección de la cámara 2
 btn_video2.onclick = () => {
     directo.src = video2.src;
     directo.currentTime = video2.currentTime;
     directo.play();
     directo.poster=null;
-};
 };
